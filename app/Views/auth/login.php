@@ -39,6 +39,16 @@ Login
 <?= $this->section('scripts') ?>
 <script>
 $(document).ready(function() {
+    <?php if (session()->getFlashdata('logout_message')): ?>
+        Swal.fire({
+            icon: 'info',
+            title: 'Sessão Encerrada',
+            text: '<?= session()->getFlashdata('logout_message') ?>',
+            showConfirmButton: false,
+            timer: 3000
+        });
+    <?php endif; ?>
+
     $('#form-login').on('submit', function(e) {
         e.preventDefault();
 
@@ -55,7 +65,7 @@ $(document).ready(function() {
                     Swal.fire({
                         icon: 'success',
                         title: 'Sucesso!',
-                        text: 'Login efetuado com sucesso.',
+                        text: `Bem vindo, Administrador`,
                         timer: 1500,
                         showConfirmButton: false
                     }).then(() => {

@@ -11,6 +11,7 @@ $routes->get('/', 'Home::index');
 
 //Rotas para clientes
 $routes->get('/', 'Clientes::index'); //Rota principal (página inicial)
+$routes->get('clientes/(:id)', 'Clientes::show/$1'); //Como se fosse getClientById
 $routes->resource('clientes');
 
 //Rotas de login

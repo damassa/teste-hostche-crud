@@ -13,7 +13,7 @@ class Auth extends BaseController
         if (session()->get('isLogged')) {
             return redirect()->to(site_url('/clientes'));
         }
-        return view('auth.login');
+        return view('auth/login');
     }
 
     public function login() {

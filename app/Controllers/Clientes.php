@@ -30,7 +30,13 @@ class Clientes extends ResourceController
      */
     public function show($id = null)
     {
-        //
+        $cliente = $this->model->find($id);
+
+        if (!$cliente) {
+            return redirect()->to(site_url('clientes'))->with('error', 'Cliente não encontrado');
+        }
+
+        return view('clientes/detail', ['cliente' => $cliente]);
     }
 
     /**
