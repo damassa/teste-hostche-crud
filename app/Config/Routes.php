@@ -13,5 +13,10 @@ $routes->get('/', 'Home::index');
 $routes->get('/', 'Clientes::index'); //Rota principal (página inicial)
 $routes->resource('clientes');
 
+//Rotas de login
+$routes->get('login', 'Auth::index');
+$routes->post('login', 'Auth::login');
+$routes->get('logout', 'Auth::logout');
+
 
 return $routes;

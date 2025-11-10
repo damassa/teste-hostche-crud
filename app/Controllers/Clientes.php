@@ -18,7 +18,7 @@ class Clientes extends ResourceController
     public function index() //Retorna todos os clientes
     {
         $data['clientes'] = $this->model->findAll(); //Pega todos os clientes
-        return view('clientes', $data); //Joga para uma view e mostra os clientes
+        return view('clientes/index', $data); //Joga para uma view e mostra os clientes
     }
 
     /**

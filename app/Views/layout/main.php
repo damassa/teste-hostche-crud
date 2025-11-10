@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $this->renderSection('title') ? $this->renderSection('title') . ' | ' : '' ?>Projeto CRUD CI</title>
+    <title><?= $this->renderSection('title') ? $this->renderSection('title') . ' | ' : '' ?>Teste Hostche - CRUD</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
