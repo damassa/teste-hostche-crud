@@ -48,7 +48,7 @@ Lista de Clientes
                                         Editar
                                     </a>
                                     
-                                    <form action="<?= site_url('clientes/' . $cliente['id']) ?>" method="post" onsubmit="return confirm('Tem certeza que deseja excluir este cliente?');" class="inline form-delete-cliente">
+                                    <form action="<?= site_url('clientes/' . $cliente['id']) ?>" method="post" class="inline form-delete-cliente">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <button type="submit" 
                                             class="text-red-600 hover:text-red-900 font-semibold focus:outline-none"
@@ -69,6 +69,17 @@ Lista de Clientes
             <p>Nenhum cliente cadastrado ainda. Clique em "Novo Cliente" para começar!</p>
         </div>
     <?php endif ?>
+    <div id="modal-edicao" class="hidden fixed inset-0 z-50 overflow-y-auto bg-gray-900 bg-opacity-50 transition-opacity duration-300 opacity-0" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+        <div id="modal-content" class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full scale-95 opacity-0 duration-300">
+            <div id="modal-body" class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <p class="text-center text-gray-500">Carregando formulário...</p>
+            </div>
+            </div>
+    </div>
+</div>
 <?= $this->endSection() ?>
 <?= $this->section('scripts') ?>
 <script>
@@ -112,7 +123,7 @@ Lista de Clientes
         modal.removeClass('hidden').addClass('opacity-100');
         modalContent.removeClass('scale-95 opacity-0').addClass('scale-100 opacity-100');
 
-        // Carrega via AJAX
+        //Carrega via AJAX
         $.get(url, function(data) {
             modalBody.html(data);
         }).fail(function() {
@@ -125,7 +136,7 @@ Lista de Clientes
         closeModal();
     });
     
-    //Fechar Modal (clique fora)
+    //Fechar Modal (tentei fazer fora do clique, acho que não consegui)
     modal.on('click', function(e) {
         if ($(e.target).is(modal)) {
             closeModal();
@@ -133,7 +144,7 @@ Lista de Clientes
     });
 
 
-    //Submissão do Formulário de Edição (AJAX)
+    //Lógica do form de edição
     $(document).on('submit', '#form-edicao-cliente', function(e) {
         e.preventDefault();
         const form = $(this);
@@ -182,9 +193,9 @@ Lista de Clientes
         });
     });
 
-//Excluir cliente
-    $(document).on('submit', '.form-delete-cliente', function(e) {
-        e.preventDefault(); //Impede a submissão padrão do formulário
+//Excluir cliente (tava dando erro, daí eu tirei. Mas deixei o código aqui caso eu precise)
+    $(document).on('submit', 'form-delete-cliente', function(e) {
+        e.preventDefault(); //Impede mandar o form da forma padrão
         
         const form = $(this);
         

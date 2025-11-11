@@ -11,13 +11,15 @@
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
     <?= $this->renderSection('styles') ?> 
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased min-h-screen">
     
     <main class="container mx-auto p-6 md:p-10">
         
-        <!-- HEADER CONDICIONAL (Só aparece se estiver logado) -->
+        <!-- Só aparece se tiver logado -->
         <?php if (session()->get('isLogged')): ?>
             <header class="flex justify-between items-center mb-6 py-3 px-6 bg-white shadow rounded-lg border-t-4 border-t-[#F36C21]">
                 
@@ -26,7 +28,7 @@
                 </h1>
 
                 <div class="flex items-center space-x-3">
-                    <!-- Nome do Usuário Logado -->
+                    <!-- E-mail do admin -->
                     <span class="text-gray-600 text-sm hidden sm:inline">
                         Olá, <?= esc(session()->get('email')) ?>
                     </span>
@@ -43,7 +45,6 @@
                 </div>
             </header>
         <?php endif; ?>
-        <!-- Fim do Header Condicional -->
 
         <?= $this->renderSection('content') ?>
     </main>
