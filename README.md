@@ -1,3 +1,14 @@
+# TESTE HOSTCHE (CRUD)
+
+## Teste para a empresa Hostche. Área administrativa com login, validação e CRUD de clientes.
+
+### Local: http://localhost:8080/
+php spark serve para ligar o CRUD
+Comando para aplicar as migrations: php spark migrate
+Comando para popular o banco com o admin: php spark db:seed
+
+
+
 # CodeIgniter 4 Application Starter
 
 ## What is CodeIgniter?
